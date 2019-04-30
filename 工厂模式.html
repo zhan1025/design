@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>工厂模式</title>
+</head>
+<body>
+     
+</body>
+<script>
+
+
+//批量创建对象的地方
+var factory = {};
+//方法
+factory.createProductX1 = function(){
+     console.log('x1');
+}
+factory.createProductX2 = function(){
+     console.log('x2');
+}
+factory.createProductX3 = function(){
+     console.log('x3');
+}
+factory.createProductX4 = function(){
+     console.log('x4');
+}
+// console.log(factory);
+
+
+//具体生成对象的方法
+factory.create = function(type){
+ return new factory[type];
+}
+
+var x3=new factory.createProductX4;
+console.log(x3);
+
+// factory.create('createProductX4');
+</script>
+</html>

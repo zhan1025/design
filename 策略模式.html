@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>策略模式</title>
+</head>
+<body>
+     
+</body>
+<script>
+//映射关系，提前把策略想好
+
+//公司：不同等级工资也是不一样，（工资=底薪*等级）
+//S-10  A-3   B-2  C-1
+//我的底薪是5000 等级S   ,工资  5000*10 = 50000
+//核心：定义好策略(映射关系)，及计算的方法
+var strategic = {
+  "A":function(salary){
+    return salary*3
+  },
+  "B":function(salary){
+    return salary*2
+  },
+  "C":function(salary){
+    return salary*1
+  },
+  "S":function(salary){
+    return salary*10
+  },
+};
+
+//封装一个计算的策略的方法
+var calcu = function(level,salary){
+  return strategic[level](salary);
+}
+
+console.log( calcu('S',5000) ); //50000
+console.log( calcu('A',3000) ); //9000
+
+</script>
+</html>

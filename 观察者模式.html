@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>观察者模式</title>
+</head>
+<body>
+     
+</body>
+<script>
+  //Observer观察者模式，发布者，订阅者模式
+  //一对多
+  function Observer(){
+    this.funcs=[];//存储订阅者，每个订阅者是一个函数
+  }
+  
+  //订阅者：关注，取消关注
+  Observer.prototype.attention = function(fn){
+    //接收一个参数，一个函数（订阅者）
+    //将关注人加入数组funcs
+    this.funcs.push(fn);
+
+  }
+
+
+  //取关
+
+  Observer.prototype.unFollow  = function (fn){
+    //接收一个参数，一个函数（取关的订阅者）
+    //将他从订阅者圈（this.funcs=[]）中去除
+    this.funcs=this.funcs.filter(function(item){
+      if(item!==fn){return item;}
+      });
+  }
+  //发布者：通知消息
+  Observer.prototype.inform =function(msg){
+    this.funcs.forEach(function(value,index){
+      value(msg);
+    });
+  }
+
+  var p1=function(msg){
+    console.log("p1收到:"+msg);
+  };
+  var p2=function(msg){
+    console.log("p2收到:"+msg);
+  };
+  //关注
+  var obj =new Observer();
+  obj.attention(p1);
+  obj.attention(p2);
+  // console.log(obj.funcs);
+  //发布者发布通知
+  obj.inform("hello");
+  //订阅者取关
+  obj.unFollow(p1);
+  obj.inform("test,follow");
+</script>
+</html>

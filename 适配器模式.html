@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>适配器模式</title>
+</head>
+<body>
+     
+</body>
+<script>
+//适配器模式核心思想：把不兼容的东西转化为兼容的东西
+//后台php:返回对象格式
+  // 适配器进行转换格式
+  var obj = {"username":"zs","age":18};
+//前端：需要数组格式
+
+
+//定义一个适配器方法，
+function objToArr(obj){
+  var arr = [];
+  for(k in  obj){
+    arr.push(obj[k]);
+  }
+  return arr;
+}
+
+var arr = objToArr(obj); 
+console.log(arr);
+
+
+</script>
+</html>
